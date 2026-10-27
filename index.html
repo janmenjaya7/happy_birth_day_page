@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Supriya 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --rose:#e8a0b4;--rose-dark:#c96b8a;--rose-light:#fce4ec;
+  --gold:#c9a84c;--gold-light:#f5e6c0;--cream:#fdf6f0;
+  --blush:#f9dde8;--deep-rose:#8b1a4a;--soft-pink:#ffb6c1;
+  --wine:#5c1a2e;--burgundy:#8b0000;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Cormorant Garamond',serif;background:var(--cream);overflow-x:hidden;cursor:none;}
+
+/* cursor */
+.cursor{position:fixed;pointer-events:none;z-index:99999;font-size:22px;transform:translate(-50%,-50%);transition:transform .1s;animation:cursorSpin 8s linear infinite;}
+@keyframes cursorSpin{0%{filter:hue-rotate(0deg);}100%{filter:hue-rotate(360deg);}}
+
+/* floating hearts click */
+@keyframes heartFloat{0%{opacity:1;transform:translate(-50%,-50%);}100%{opacity:0;transform:translate(calc(-50% + var(--tx)),calc(-50% - 120px));}}
+
+/* ===== HERO ===== */
+#hero{
+  min-height:100vh;position:relative;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;overflow:hidden;
+  background:linear-gradient(160deg,#1a0a14 0%,#3a0e26 35%,#5a1a38 65%,#3a0e26 100%);
+}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;animation:orbDrift ease-in-out infinite;}
+@keyframes orbDrift{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-20px);}}
+.shimmer{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(201,168,76,.18) 0%,transparent 70%);animation:shimPulse 5s ease-in-out infinite;}
+@keyframes shimPulse{0%,100%{opacity:.5;}50%{opacity:1;}}
+
+/* rose petals */
+.petal{position:absolute;border-radius:50% 0 50% 0;animation:petalFloat linear infinite;pointer-events:none;}
+@keyframes petalFloat{0%{transform:translateY(110vh) rotate(0deg);opacity:0;}8%{opacity:.1;}92%{opacity:.1;}100%{transform:translateY(-10vh) rotate(720deg);opacity:0;}}
+.emoji-float{position:absolute;animation:emojiDrift linear infinite;pointer-events:none;opacity:0;}
+@keyframes emojiDrift{0%{transform:translateY(110vh) rotate(0deg);opacity:0;}10%{opacity:.7;}90%{opacity:.7;}100%{transform:translateY(-20vh) rotate(360deg);opacity:0;}}
+
+/* hero text */
+.hero-content{position:relative;z-index:10;text-align:center;padding:2rem;}
+.hero-tag{font-family:'Dancing Script',cursive;color:var(--gold);font-size:clamp(1rem,2.5vw,1.4rem);letter-spacing:.2em;opacity:0;animation:fadeUp .9s ease forwards .4s;}
+.hero-h1{font-family:'Great Vibes',cursive;font-size:clamp(3rem,10vw,8.5rem);color:#fff;line-height:1;opacity:0;animation:fadeUp .9s ease forwards .7s;text-shadow:0 0 80px rgba(201,168,76,.35);}
+.hero-name{font-family:'Great Vibes',cursive;color:var(--gold);font-size:clamp(3.5rem,11vw,10rem);line-height:1;opacity:0;animation:fadeUp .9s ease forwards 1s;display:block;text-shadow:0 0 60px rgba(201,168,76,.4);}
+.hero-date{font-family:'Dancing Script',cursive;color:rgba(255,255,255,.65);font-size:clamp(.9rem,2vw,1.2rem);letter-spacing:.15em;margin-top:1rem;opacity:0;animation:fadeUp .9s ease forwards 1.3s;}
+.hero-divider{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:2rem auto;opacity:0;animation:fadeUp .9s ease forwards 1.6s;}
+.div-line{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
+.div-line.r{background:linear-gradient(90deg,var(--gold),transparent);}
+.div-gem{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 10px rgba(201,168,76,.6);}
+.scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.4);font-size:.7rem;letter-spacing:.2em;opacity:0;animation:fadeIn 1s ease forwards 2.5s;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--gold),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{transform:scaleY(1);opacity:.5;}50%{transform:scaleY(1.4);opacity:1;}}
+
+/* music */
+.music-player{position:fixed;top:1.5rem;right:1.5rem;z-index:1000;display:flex;align-items:center;gap:.8rem;background:rgba(26,10,20,.85);backdrop-filter:blur(20px);border:1px solid rgba(201,168,76,.3);border-radius:50px;padding:.5rem 1.2rem .5rem .5rem;box-shadow:0 8px 32px rgba(0,0,0,.35);}
+.m-btn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8c06b);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:.2s;flex-shrink:0;}
+.m-btn:hover{transform:scale(1.12);box-shadow:0 0 15px rgba(201,168,76,.5);}
+.m-title{font-family:'Dancing Script',cursive;color:var(--gold);font-size:.9rem;white-space:nowrap;}
+.m-artist{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:.04em;}
+.m-viz{display:flex;align-items:flex-end;gap:2px;height:20px;margin-left:4px;}
+.bar{width:3px;background:var(--rose);border-radius:2px;animation:barDance .5s ease-in-out infinite;}
+.bar:nth-child(2){animation-delay:.1s;}.bar:nth-child(3){animation-delay:.2s;}.bar:nth-child(4){animation-delay:.15s;}
+@keyframes barDance{0%,100%{height:4px;}50%{height:18px;}}
+.music-player.paused .bar{animation-play-state:paused;}
+
+/* confetti */
+.confetti-piece{position:fixed;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
+@keyframes confettiFall{0%{opacity:1;transform:translateY(0) rotate(0deg);}100%{opacity:0;transform:translateY(110vh) rotate(720deg);}}
+
+/* sections */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ===== PHOTO REVEAL SECTION ===== */
+#photo-section{
+  min-height:100vh;position:relative;
+  background:linear-gradient(160deg,#3a0e26 0%,var(--cream) 40%);
+  display:flex;align-items:center;justify-content:center;
+  padding:6rem 2rem;overflow:hidden;
+}
+#photo-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,.05) 0%,transparent 60%);}
+
+.photo-inner{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:4rem;max-width:1100px;width:100%;position:relative;z-index:1;
+}
+
+/* Photo frame */
+.photo-frame-wrap{
+  position:relative;flex-shrink:0;
+}
+.photo-frame{
+  width:340px;height:420px;border-radius:50% 50% 45% 45% / 55% 55% 45% 45%;
+  overflow:hidden;position:relative;
+  box-shadow:0 30px 80px rgba(90,26,46,.4), 0 0 0 8px rgba(201,168,76,.2), 0 0 0 16px rgba(201,168,76,.08);
+  animation:photoFloat 6s ease-in-out infinite;
+}
+@keyframes photoFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+.photo-glow{
+  position:absolute;inset:-20px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(201,168,76,.25) 0%,transparent 70%);
+  animation:photoGlow 4s ease-in-out infinite;pointer-events:none;
+}
+@keyframes photoGlow{0%,100%{opacity:.4;}50%{opacity:1;}}
+
+/* Rose crown decoration above photo */
+.rose-crown{
+  position:absolute;top:-40px;left:50%;transform:translateX(-50%);
+  font-size:2.2rem;letter-spacing:.5rem;animation:crownSway 3s ease-in-out infinite;
+  white-space:nowrap;
+}
+@keyframes crownSway{0%,100%{transform:translateX(-50%) rotate(-3deg);}50%{transform:translateX(-50%) rotate(3deg);}}
+
+/* floating gems around photo */
+.gem{
+  position:absolute;width:10px;height:10px;background:var(--gold);
+  transform:rotate(45deg);animation:gemOrbit ease-in-out infinite;
+  box-shadow:0 0 8px rgba(201,168,76,.8);
+}
+@keyframes gemOrbit{0%,100%{opacity:.4;transform:rotate(45deg) scale(.8);}50%{opacity:1;transform:rotate(225deg) scale(1.2);}}
+
+/* Photo text */
+.photo-text{max-width:480px;}
+.photo-text .label{font-family:'Dancing Script',cursive;color:var(--rose-dark);font-size:1.3rem;display:block;margin-bottom:.5rem;}
+.photo-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);color:var(--deep-rose);line-height:1.15;margin-bottom:1.5rem;}
+.photo-text h2 em{color:var(--gold);font-style:italic;}
+.photo-text p{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#5a2535;line-height:2;font-style:italic;margin-bottom:1.2rem;}
+.photo-text .sig{font-family:'Great Vibes',cursive;font-size:2rem;color:var(--gold);margin-top:1.5rem;}
+
+/* ===== CARD SECTION ===== */
+#card-section{
+  min-height:100vh;background:var(--cream);padding:6rem 2rem;
+  position:relative;overflow:hidden;
+}
+.card-section-title{text-align:center;margin-bottom:4rem;position:relative;z-index:1;}
+.card-section-title .label{font-family:'Dancing Script',cursive;color:var(--rose-dark);font-size:1.2rem;display:block;margin-bottom:.4rem;}
+.card-section-title h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--deep-rose);}
+.card-section-title h2 em{color:var(--gold);font-style:italic;}
+
+.card-wrap{max-width:700px;margin:0 auto 5rem;perspective:1400px;position:relative;z-index:1;}
+.bday-card{width:100%;aspect-ratio:4/3;position:relative;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.23,1,.32,1);cursor:pointer;border-radius:24px;}
+.bday-card:hover{transform:rotateY(-180deg);}
+.card-front,.card-back{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;overflow:hidden;}
+.card-front{
+  background:linear-gradient(135deg,#3a0e26 0%,#7a2050 50%,#3a0e26 100%);
+  box-shadow:0 30px 80px rgba(58,14,38,.45),inset 0 1px 0 rgba(255,255,255,.08);
+  border:1px solid rgba(201,168,76,.3);
+}
+.card-inner-border{position:absolute;inset:14px;border:1px solid rgba(201,168,76,.2);border-radius:14px;pointer-events:none;}
+.sparkle{position:absolute;color:var(--gold);font-size:1.1rem;animation:sparkAnim 2.2s ease-in-out infinite;pointer-events:none;}
+@keyframes sparkAnim{0%,100%{opacity:.15;transform:scale(.4) rotate(0);}50%{opacity:1;transform:scale(1) rotate(180deg);}}
+.card-rose{font-size:3.5rem;animation:roseSway 3s ease-in-out infinite;margin-bottom:1rem;}
+@keyframes roseSway{0%,100%{transform:rotate(-6deg);}50%{transform:rotate(6deg);}}
+.card-f-title{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.4rem,3.5vw,2.2rem);text-align:center;line-height:1.25;}
+.card-f-name{font-family:'Great Vibes',cursive;color:var(--gold);font-size:clamp(2.2rem,6vw,3.8rem);margin-top:.4rem;text-shadow:0 0 20px rgba(201,168,76,.4);}
+.card-hint{font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,.35);font-size:.78rem;letter-spacing:.2em;margin-top:2rem;font-style:italic;}
+.card-back{background:linear-gradient(135deg,#fff9f5 0%,#fff 60%,#fce4ec 100%);box-shadow:0 30px 80px rgba(58,14,38,.3);transform:rotateY(180deg);border:1px solid rgba(201,168,76,.18);}
+.card-back-content{text-align:center;max-width:490px;}
+.cb-head{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--deep-rose);margin-bottom:1rem;}
+.cb-msg{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:#4a1a2a;line-height:2;font-style:italic;}
+.cb-sig{font-family:'Great Vibes',cursive;font-size:1.6rem;color:var(--gold);margin-top:1.5rem;}
+
+/* wish cards */
+.wish-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;max-width:1000px;margin:0 auto;position:relative;z-index:1;}
+.wish-card{background:#fff;border-radius:20px;padding:2.5rem 2rem;text-align:center;border:1px solid rgba(201,168,76,.12);box-shadow:0 10px 40px rgba(58,14,38,.07);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.23,1,.32,1),box-shadow .4s;opacity:0;transform:translateY(30px);}
+.wish-card.vis{animation:cardUp .7s cubic-bezier(.23,1,.32,1) forwards;}
+@keyframes cardUp{to{opacity:1;transform:translateY(0);}}
+.wish-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--rose-dark),var(--gold),var(--rose-dark));}
+.wish-card:hover{transform:translateY(-8px);box-shadow:0 25px 60px rgba(58,14,38,.14);}
+.wish-em{font-size:2.5rem;display:block;margin-bottom:.8rem;animation:wiggle 3.5s ease-in-out infinite;}
+@keyframes wiggle{0%,100%{transform:rotate(-4deg);}50%{transform:rotate(4deg);}}
+.wish-title{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--deep-rose);margin-bottom:.7rem;}
+.wish-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#6a3545;line-height:1.85;font-style:italic;}
+
+/* ===== LOVE LETTER ===== */
+#love-letter{
+  min-height:80vh;background:linear-gradient(160deg,#3a0e26 0%,#6b1a40 50%,#3a0e26 100%);
+  padding:6rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+#love-letter::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(201,168,76,.1) 0%,transparent 55%),radial-gradient(ellipse at 70% 50%,rgba(232,160,180,.1) 0%,transparent 55%);}
+.letter-wrap{max-width:700px;width:100%;position:relative;z-index:1;}
+.letter-paper{background:linear-gradient(135deg,#fff9f5,#fff);border-radius:3px;padding:3.5rem;box-shadow:0 40px 100px rgba(0,0,0,.45),0 0 0 1px rgba(201,168,76,.15);transform:rotate(-1deg);transition:transform .5s ease;position:relative;}
+.letter-paper:hover{transform:rotate(0);}
+.letter-paper::after{content:'';position:absolute;top:0;bottom:0;left:3.5rem;width:1px;background:rgba(232,160,180,.35);}
+.letter-head{font-family:'Dancing Script',cursive;font-size:2.3rem;color:var(--deep-rose);margin-bottom:1.5rem;text-align:center;}
+.letter-body{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#3a1520;line-height:2.1;font-style:italic;}
+.letter-body p{margin-bottom:1rem;}
+.letter-sig{font-family:'Great Vibes',cursive;font-size:2rem;color:var(--gold);text-align:right;margin-top:2rem;}
+
+/* ===== DUMMY IMAGE SECTION ===== */
+#memories{padding:6rem 2rem;background:var(--cream);position:relative;overflow:hidden;}
+.mem-header{text-align:center;margin-bottom:3rem;position:relative;z-index:1;}
+.mem-header .label{font-family:'Dancing Script',cursive;color:var(--rose-dark);font-size:1.2rem;display:block;margin-bottom:.4rem;}
+.mem-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--deep-rose);}
+.mem-header h2 em{color:var(--gold);font-style:italic;}
+.mem-quote{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,2.5vw,1.7rem);color:var(--deep-rose);text-align:center;max-width:560px;margin:0 auto 4rem;line-height:1.7;font-style:italic;position:relative;z-index:1;}
+.mem-quote::before{content:'"';font-size:7rem;color:var(--rose-light);position:absolute;top:-2.5rem;left:-2.5rem;line-height:1;z-index:-1;}
+
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto;position:relative;z-index:1;}
+.tile{border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(58,14,38,.12);transition:transform .4s cubic-bezier(.23,1,.32,1);cursor:pointer;position:relative;}
+.tile:hover{transform:scale(1.04);}
+.tile:nth-child(1){grid-column:1/3;}.tile:nth-child(4){grid-column:2/4;}
+.tile-inner{width:100%;padding-bottom:65%;position:relative;}
+.tile-inner.tall{padding-bottom:110%;}
+.tile-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;}
+.tile-icon{font-size:3rem;}.tile-lbl{font-family:'Dancing Script',cursive;font-size:1.3rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.3);}
+.tile-overlay{position:absolute;inset:0;background:rgba(58,14,38,.65);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;padding:1.2rem;text-align:center;flex-direction:column;gap:.5rem;}
+.tile:hover .tile-overlay{opacity:1;}
+.tile-ov-text{font-family:'Cormorant Garamond',serif;color:#fff;font-size:.95rem;font-style:italic;line-height:1.65;}
+
+/* ===== FOOTER ===== */
+#footer{background:linear-gradient(180deg,#3a0e26 0%,#1a0a14 100%);padding:6rem 2rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.foot-roses{display:flex;justify-content:center;gap:1rem;font-size:1.6rem;margin-bottom:2rem;animation:rosesDrift 6s ease-in-out infinite;}
+@keyframes rosesDrift{0%,100%{letter-spacing:.8rem;}50%{letter-spacing:1.3rem;}}
+.foot-title{font-family:'Great Vibes',cursive;font-size:clamp(2.5rem,7vw,5rem);color:#fff;margin-bottom:.5rem;}
+.foot-title span{color:var(--gold);}
+.foot-heart{font-size:3.5rem;display:block;animation:heartbeat 1.4s ease-in-out infinite;margin:1.5rem auto;}
+@keyframes heartbeat{0%,100%{transform:scale(1);}14%{transform:scale(1.18);}28%{transform:scale(1);}42%{transform:scale(1.1);}70%{transform:scale(1);}}
+.foot-msg{font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,.55);font-size:1.1rem;font-style:italic;max-width:520px;margin:0 auto 3rem;line-height:1.9;}
+.foot-credit{font-size:.72rem;color:rgba(255,255,255,.18);letter-spacing:.15em;font-family:'Cormorant Garamond',serif;margin-top:2rem;}
+
+/* falling roses */
+.falling-rose{position:fixed;top:-50px;animation:roseFall linear infinite;opacity:0;pointer-events:none;z-index:5;}
+@keyframes roseFall{0%{transform:translateY(0) rotate(0deg);opacity:0;}6%{opacity:.7;}94%{opacity:.7;}100%{transform:translateY(110vh) rotate(360deg);opacity:0;}}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+
+/* bg decor text */
+.bg-decor{position:absolute;font-size:7rem;opacity:.035;pointer-events:none;user-select:none;}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor">🌹</div>
+
+<!-- Falling roses -->
+<div id="roseShower"></div>
+
+<!-- Music Player -->
+<div class="music-player" id="musicPlayer">
+  <button class="m-btn" id="mBtn" onclick="toggleMusic()">▶</button>
+  <div>
+    <div class="m-title">A Thousand Years — C. Perri</div>
+    <div class="m-artist">♪ Playing for Supriya</div>
+  </div>
+  <div class="m-viz">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="shimmer"></div>
+  <div class="hero-glow" style="width:500px;height:500px;background:rgba(139,26,74,.3);top:5%;left:-10%;animation-duration:9s;"></div>
+  <div class="hero-glow" style="width:350px;height:350px;background:rgba(201,168,76,.12);bottom:5%;right:-5%;animation-duration:11s;"></div>
+  <div class="hero-glow" style="width:250px;height:250px;background:rgba(232,160,180,.12);top:50%;left:60%;animation-duration:7s;"></div>
+  <div class="hero-content">
+    <div class="hero-tag">✦ 7th May — A Day The World Got More Beautiful ✦</div>
+    <h1 class="hero-h1">Happy Birthday</h1>
+    <span class="hero-name" id="heroName"></span>
+    <div class="hero-date">May 7th — Forever Remembered 💕</div>
+    <div class="hero-divider">
+      <div class="div-line"></div>
+      <div class="div-gem"></div><div class="div-gem" style="transform:rotate(45deg) scale(.6);background:rgba(201,168,76,.4)"></div><div class="div-gem"></div>
+      <div class="div-line r"></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ===== PHOTO SECTION ===== -->
+<section id="photo-section">
+  <div class="photo-inner">
+    <!-- Photo -->
+    <div class="photo-frame-wrap">
+      <div class="rose-crown">🌹🌸🌹🌸🌹</div>
+      <div class="photo-frame">
+        <div class="photo-glow"></div>
+        <img src="https://images.unsplash.com/photo-1560061498-4d1e6d2c8b9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Supriya" class="photo" id="photo">
+      </div>
+      <!-- decorative gems -->
+      <div class="gem" style="top:10%;left:-15px;animation-duration:4s;"></div>
+      <div class="gem" style="top:40%;right:-15px;animation-duration:5s;animation-delay:.5s;"></div>
+      <div class="gem" style="bottom:15%;left:-10px;animation-duration:3.5s;animation-delay:1s;"></div>
+      <div class="gem" style="bottom:30%;right:-12px;animation-duration:4.5s;animation-delay:.3s;"></div>
+    </div>
+
+    <!-- Text -->
+    <div class="photo-text reveal">
+      <span class="label">✦ The Radiant One ✦</span>
+      <h2>She Walks In<br><em>Beauty & Grace</em></h2>
+      <p>Look at you, Supriya — you are the embodiment of elegance and warmth. Every room you enter becomes more alive, more joyful, more luminous simply because <em>you</em> are in it.</p>
+      <p>Your eyes carry the depth of a thousand love stories. Your smile — that radiant, soul-warming smile — is the most beautiful thing I have ever seen. On this magical day of yours, I want you to know that you are cherished beyond words.</p>
+      <div class="sig">Forever yours 🌹</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CARD SECTION ===== -->
+<section id="card-section">
+  <div class="bg-decor" style="top:5%;right:3%">🌹</div>
+  <div class="bg-decor" style="bottom:10%;left:2%">🌸</div>
+  <div class="card-section-title reveal">
+    <span class="label">✦ Open Your Heart ✦</span>
+    <h2>A Card Just For <em>You</em></h2>
+  </div>
+
+  <div class="card-wrap">
+    <div class="bday-card">
+      <!-- FRONT -->
+      <div class="card-front">
+        <div class="card-inner-border"></div>
+        <div class="sparkle" style="top:12%;left:8%;animation-delay:0s">✦</div>
+        <div class="sparkle" style="top:18%;right:10%;animation-delay:.6s">✧</div>
+        <div class="sparkle" style="bottom:18%;left:12%;animation-delay:1.1s">✦</div>
+        <div class="sparkle" style="bottom:12%;right:8%;animation-delay:1.7s">✧</div>
+        <div class="sparkle" style="top:48%;left:3%;font-size:.8rem;animation-delay:.4s">✦</div>
+        <div class="sparkle" style="top:48%;right:3%;font-size:.8rem;animation-delay:1.3s">✦</div>
+        <div class="card-rose">🌹</div>
+        <div class="card-f-title">Wishing the most beautiful<br>birthday to the most<br>beautiful soul,</div>
+        <div class="card-f-name">Supriya</div>
+        <div class="card-hint">↻ Hover to open your surprise</div>
+      </div>
+      <!-- BACK -->
+      <div class="card-back">
+        <div class="card-back-content">
+          <div class="cb-head">My Dearest Supriya,</div>
+          <div class="cb-msg">
+            The world was blessed the day you were born. You carry a rare kind of magic — a light that draws people in, a heart that makes everything feel safe and warm. Today is your day, and I want every second of it to feel as extraordinary as you are.<br><br>
+            You deserve oceans of happiness, skies full of stars, and a love that wraps around you like the softest embrace. Happy Birthday, my darling.
+          </div>
+          <div class="cb-sig">With all my love, always 💕</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wish Cards -->
+  <div class="wish-grid">
+    <div class="wish-card" data-d="0"><span class="wish-em">🌹</span><div class="wish-title">A Garden of Love</div><div class="wish-text">May every day of this new year bloom with roses — as radiant and beautiful as your spirit.</div></div>
+    <div class="wish-card" data-d="150"><span class="wish-em">✨</span><div class="wish-title">Wishes Upon Stars</div><div class="wish-text">Every wish you whisper tonight be carried by the stars to where it was meant to come true.</div></div>
+    <div class="wish-card" data-d="300"><span class="wish-em">💫</span><div class="wish-title">Golden Adventures</div><div class="wish-text">May this birthday mark the beginning of your most glorious chapter — full of wonder and golden memories.</div></div>
+    <div class="wish-card" data-d="450"><span class="wish-em">🎂</span><div class="wish-title">Sweet Life</div><div class="wish-text">May your life be as sweet as the fondest memories, filled with joy that overflows every corner of your heart.</div></div>
+    <div class="wish-card" data-d="600"><span class="wish-em">💕</span><div class="wish-title">Boundless Love</div><div class="wish-text">You are loved more than you will ever know — deeply, truly, completely, and without condition.</div></div>
+    <div class="wish-card" data-d="750"><span class="wish-em">🦋</span><div class="wish-title">Beautiful Tomorrow</div><div class="wish-text">Like a butterfly emerging in spring, may this birthday bring you freedom, lightness, and a new beautiful beginning.</div></div>
+  </div>
+</section>
+
+<!-- ===== LOVE LETTER ===== -->
+<section id="love-letter">
+  <div style="text-align:center;margin-bottom:3rem;position:relative;z-index:1;" class="reveal">
+    <span style="font-family:'Dancing Script',cursive;color:var(--gold);font-size:1.2rem;display:block;margin-bottom:.4rem;">✦ From My Heart ✦</span>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:white;">Words That <em style="color:var(--gold);font-style:italic;">Cannot Wait</em></h2>
+  </div>
+  <div class="letter-wrap reveal">
+    <div class="letter-paper">
+      <div class="letter-head">My Beautiful Supriya,</div>
+      <div class="letter-body">
+        <p>Some feelings are too large for words, and yet — on your birthday — I want to try.</p>
+        <p>You are the reason ordinary days feel like poetry. The way you laugh, the way you see the world, the way you love — all of it, Supriya, is extraordinary. You don't just walk through life; you <em>illuminate</em> it.</p>
+        <p>I think the stars arranged themselves differently the day you were born. The world became softer, kinder, more beautiful. And every day I am reminded of that gift when I see your smile.</p>
+        <p>On this birthday, I don't wish you just happiness — I wish you the kind of deep, soul-level joy that stays with you long after the candles are blown out. I wish you love as fierce and tender as you deserve. I wish you every dream you've ever dared to dream.</p>
+        <p>You are my favourite person on this entire earth. Happy Birthday, my love.</p>
+      </div>
+      <div class="letter-sig">Yours, now and always 🌹</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MEMORIES / DUMMY IMAGE ===== -->
+<section id="memories">
+  <div class="bg-decor" style="top:10%;left:1%;font-size:9rem">🌸</div>
+  <div class="bg-decor" style="bottom:8%;right:2%">🌹</div>
+  <div class="mem-header reveal">
+    <span class="label">✦ A Bouquet of Memories ✦</span>
+    <h2>Moments That Live <em>Forever</em></h2>
+  </div>
+  <div class="mem-quote reveal">"You are the poem I never knew how to write, and this life is the story I always wanted to tell."</div>
+  <div class="tiles reveal">
+    <div class="tile">
+      <div class="tile-inner">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#5c1a2e,#c96b8a,#e8a0b4);">
+          <!-- dummy image placeholder with SVG art -->
+          <svg width="100%" height="100%" style="position:absolute;inset:0;" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#7a2050" width="300" height="200"/>
+            <circle cx="150" cy="80" r="55" fill="rgba(255,255,255,.06)"/>
+            <circle cx="150" cy="80" r="38" fill="rgba(255,255,255,.06)"/>
+            <text x="150" y="85" text-anchor="middle" font-family="Georgia" font-size="36" fill="rgba(255,255,255,.4)">🌹</text>
+            <text x="150" y="130" text-anchor="middle" font-family="Georgia" font-size="14" fill="rgba(255,255,255,.5)" font-style="italic">The Day We Met</text>
+            <text x="150" y="150" text-anchor="middle" font-family="Georgia" font-size="11" fill="rgba(255,255,255,.3)">A beautiful beginning</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tile-overlay"><div class="tile-ov-text">"The universe conspired to bring two hearts together — and I am eternally grateful it did."</div></div>
+    </div>
+    <div class="tile">
+      <div class="tile-inner tall">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#3a0e26,#7a2050);">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#4a1230" width="200" height="300"/>
+            <circle cx="100" cy="130" r="60" fill="rgba(255,255,255,.05)"/>
+            <text x="100" y="135" text-anchor="middle" font-size="42" fill="rgba(255,255,255,.4)">✨</text>
+            <text x="100" y="195" text-anchor="middle" font-family="Georgia" font-size="13" fill="rgba(255,255,255,.45)" font-style="italic">Magic Moments</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tile-overlay"><div class="tile-ov-text">"Every ordinary day becomes extraordinary when I spend it with you, Supriya."</div></div>
+    </div>
+    <div class="tile">
+      <div class="tile-inner" style="padding-bottom:85%;">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#c9a84c,#e8c06b,#c96b8a);">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;" viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#a07830" width="200" height="170"/>
+            <text x="100" y="80" text-anchor="middle" font-size="38" fill="rgba(255,255,255,.45)">💫</text>
+            <text x="100" y="115" text-anchor="middle" font-family="Georgia" font-size="13" fill="rgba(255,255,255,.5)" font-style="italic">Our Adventures</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tile-overlay"><div class="tile-ov-text">"Side by side or miles apart, you are always in my heart, always on my mind."</div></div>
+    </div>
+    <div class="tile">
+      <div class="tile-inner" style="padding-bottom:85%;">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#5a1a38,#c96b8a);">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;" viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#6a1840" width="200" height="170"/>
+            <text x="100" y="80" text-anchor="middle" font-size="38" fill="rgba(255,255,255,.45)">💕</text>
+            <text x="100" y="115" text-anchor="middle" font-family="Georgia" font-size="13" fill="rgba(255,255,255,.5)" font-style="italic">Laughter & Love</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tile-overlay"><div class="tile-ov-text">"Your laughter is the most beautiful sound I have ever heard in my entire life."</div></div>
+    </div>
+    <div class="tile">
+      <div class="tile-inner" style="padding-bottom:45%;">
+        <div class="tile-bg" style="background:linear-gradient(135deg,#1a0a14,#5a1a38);">
+          <svg width="100%" height="100%" style="position:absolute;inset:0;" viewBox="0 0 300 135" xmlns="http://www.w3.org/2000/svg">
+            <rect fill="#2a0e1e" width="300" height="135"/>
+            <text x="150" y="60" text-anchor="middle" font-size="32" fill="rgba(255,255,255,.4)">🌸</text>
+            <text x="150" y="100" text-anchor="middle" font-family="Georgia" font-size="14" fill="rgba(255,255,255,.45)" font-style="italic">Forever & Always</text>
+          </svg>
+        </div>
+      </div>
+      <div class="tile-overlay"><div class="tile-ov-text">"In all the world, there is no heart so full of love as the one that beats for you."</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<section id="footer">
+  <div class="hero-glow" style="width:600px;height:300px;background:rgba(232,160,180,.07);bottom:0;left:50%;transform:translateX(-50%);animation-duration:12s;"></div>
+  <div class="foot-roses">🌹🌸🌹🌸🌹</div>
+  <div class="foot-title">Happy Birthday<br><span>Supriya</span></div>
+  <span class="foot-heart">💕</span>
+  <p class="foot-msg">May today be the first page of the most beautiful chapter of your life. You are loved more than words could ever say — deeply, endlessly, completely.</p>
+  <div class="foot-roses" style="font-size:1rem;gap:.5rem;">🌹 🌹 🌹 🌹 🌹 🌹 🌹</div>
+  <div class="foot-credit">Made with infinite love, just for Supriya ✦ 7 May 2026</div>
+</section>
+
+<script>
+// ===== CURSOR =====
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// ===== TYPEWRITER NAME =====
+const name = 'Supriya';
+let i = 0;
+const el = document.getElementById('heroName');
+el.style.borderRight = '3px solid #c9a84c';
+setTimeout(() => {
+  const t = setInterval(() => {
+    el.textContent = name.slice(0,++i);
+    if(i >= name.length){ clearInterval(t); setTimeout(()=>el.style.borderRight='none',2000); }
+  }, 130);
+}, 900);
+
+// ===== PETALS =====
+const hero = document.getElementById('hero');
+const petalColors = ['#8b1a4a','#c96b8a','#6b2040','#e8a0b4','#7a2050'];
+for(let p=0;p<16;p++){
+  const el2=document.createElement('div');
+  el2.className='petal';
+  const s=40+Math.random()*80;
+  el2.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background:${petalColors[p%5]};animation-duration:${8+Math.random()*12}s;animation-delay:-${Math.random()*15}s;`;
+  hero.appendChild(el2);
+}
+const emojis=['🌹','🌸','✨','💕','🌺','💫'];
+for(let p=0;p<22;p++){
+  const el3=document.createElement('div');
+  el3.className='emoji-float';
+  el3.textContent=emojis[p%emojis.length];
+  el3.style.cssText=`left:${Math.random()*100}%;font-size:${12+Math.random()*16}px;animation-duration:${10+Math.random()*16}s;animation-delay:-${Math.random()*22}s;`;
+  hero.appendChild(el3);
+}
+
+// ===== ROSE SHOWER =====
+const shower = document.getElementById('roseShower');
+for(let r=0;r<18;r++){
+  const rose=document.createElement('div');
+  rose.className='falling-rose';
+  rose.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  rose.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*14}px;animation-duration:${12+Math.random()*18}s;animation-delay:-${Math.random()*26}s;`;
+  shower.appendChild(rose);
+}
+
+// ===== CONFETTI =====
+function launchConfetti(){
+  const cols=['#e8a0b4','#c9a84c','#f9dde8','#8b1a4a','#fff','#fce4ec','#c96b8a'];
+  for(let c=0;c<100;c++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.cssText=`left:${Math.random()*100}%;top:-10px;background:${cols[c%cols.length]};animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()*2}s;transform:rotate(${Math.random()*360}deg);width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?'50%':'2px'};`;
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),6000);
+  }
+}
+window.addEventListener('load',()=>setTimeout(launchConfetti,600));
+
+// ===== SCROLL REVEAL =====
+const revealObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');revealObs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(r=>revealObs.observe(r));
+
+const wishObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const delay=parseInt(e.target.dataset.d)||0;
+      setTimeout(()=>e.target.classList.add('vis'),delay);
+      wishObs.unobserve(e.target);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.wish-card').forEach(w=>wishObs.observe(w));
+
+// ===== PARALLAX =====
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const hc=document.querySelector('.hero-content');
+  if(hc){hc.style.transform=`translateY(${sy*.28}px)`;hc.style.opacity=1-(sy/window.innerHeight);}
+});
+
+// ===== MUSIC =====
+let playing=false;
+const audio=document.getElementById('bgMusic');
+const mBtn=document.getElementById('mBtn');
+const mp=document.getElementById('musicPlayer');
+function toggleMusic(){
+  if(playing){audio.pause();mBtn.textContent='▶';mp.classList.add('paused');}
+  else{audio.play().catch(()=>{});mBtn.textContent='⏸';mp.classList.remove('paused');}
+  playing=!playing;
+}
+
+// ===== CLICK HEARTS =====
+const hStyle=document.createElement('style');
+hStyle.textContent=`@keyframes hfloat{0%{opacity:1;transform:translate(-50%,-50%);}100%{opacity:0;transform:translate(calc(-50% + var(--tx)),calc(-50% - 130px));}}`;
+document.head.appendChild(hStyle);
+document.addEventListener('click',e=>{
+  const items=['💕','🌹','🌸','✨','💫','❤️','🌺'];
+  for(let h=0;h<7;h++){
+    const heart=document.createElement('div');
+    const tx=(Math.random()*100-50)+'px';
+    heart.style.cssText=`position:fixed;left:${e.clientX}px;top:${e.clientY}px;font-size:${14+Math.random()*14}px;pointer-events:none;z-index:99999;animation:hfloat ${1.2+Math.random()*.6}s ease forwards;--tx:${tx};`;
+    heart.textContent=items[Math.floor(Math.random()*items.length)];
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),2000);
+  }
+});
+</script>
+</body>
+</html>
